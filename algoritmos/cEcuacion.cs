@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace algoritmos
 {
-    public class cIterativo
+    public class cEcuacion
     {
         private cPixel pixel;
         public int velocidad = 10;
 
         // Constructor
-        public cIterativo(cPixel pixel)
+        public cEcuacion(cPixel pixel)
         {
             this.pixel = pixel;
         }

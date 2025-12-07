@@ -93,6 +93,7 @@
             this.btnFloodFillIterativo.TabIndex = 0;
             this.btnFloodFillIterativo.Text = "Flood Fill Iterativo";
             this.btnFloodFillIterativo.UseVisualStyleBackColor = true;
+            this.btnFloodFillIterativo.Click += new System.EventHandler(this.btnFloodFillIterativo_Click_1);
             // 
             // btnFloodFill
             // 
@@ -102,6 +103,7 @@
             this.btnFloodFill.TabIndex = 1;
             this.btnFloodFill.Text = "Flood Fill Recursivo";
             this.btnFloodFill.UseVisualStyleBackColor = true;
+            this.btnFloodFill.Click += new System.EventHandler(this.btnFloodFill_Click_1);
             // 
             // btnBoundaryFill
             // 
@@ -111,6 +113,7 @@
             this.btnBoundaryFill.TabIndex = 2;
             this.btnBoundaryFill.Text = "Boundary Fill";
             this.btnBoundaryFill.UseVisualStyleBackColor = true;
+            this.btnBoundaryFill.Click += new System.EventHandler(this.btnBoundaryFill_Click_1);
             // 
             // btnCerrarPoligono
             // 
@@ -120,6 +123,7 @@
             this.btnCerrarPoligono.TabIndex = 1;
             this.btnCerrarPoligono.Text = "Cerrar Poligono";
             this.btnCerrarPoligono.UseVisualStyleBackColor = true;
+            this.btnCerrarPoligono.Click += new System.EventHandler(this.btnCerrarPoligono_Click_1);
             // 
             // btnLimpiar
             // 
@@ -129,6 +133,7 @@
             this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click_1);
             // 
             // groupBox3
             // 

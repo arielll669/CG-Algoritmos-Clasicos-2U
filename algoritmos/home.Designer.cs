@@ -36,9 +36,10 @@
             this.circunferencia1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circunferencia2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circunferencia3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sutherlandHodgmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.sutherlandHodgmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recorteDeLíneasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             this.circunferencia1ToolStripMenuItem,
             this.circunferencia2ToolStripMenuItem,
             this.circunferencia3ToolStripMenuItem,
+            this.recorteDeLíneasToolStripMenuItem,
             this.sutherlandHodgmanToolStripMenuItem});
             this.algoritmosToolStripMenuItem.Name = "algoritmosToolStripMenuItem";
             this.algoritmosToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
@@ -70,44 +72,51 @@
             // dDAToolStripMenuItem
             // 
             this.dDAToolStripMenuItem.Name = "dDAToolStripMenuItem";
-            this.dDAToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.dDAToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.dDAToolStripMenuItem.Text = "DDA";
             this.dDAToolStripMenuItem.Click += new System.EventHandler(this.dDAToolStripMenuItem_Click);
             // 
             // bresenhanToolStripMenuItem
             // 
             this.bresenhanToolStripMenuItem.Name = "bresenhanToolStripMenuItem";
-            this.bresenhanToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.bresenhanToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.bresenhanToolStripMenuItem.Text = "Bresenhan";
             this.bresenhanToolStripMenuItem.Click += new System.EventHandler(this.bresenhanToolStripMenuItem_Click);
             // 
             // puntoMedioToolStripMenuItem
             // 
             this.puntoMedioToolStripMenuItem.Name = "puntoMedioToolStripMenuItem";
-            this.puntoMedioToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.puntoMedioToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.puntoMedioToolStripMenuItem.Text = "Punto medio";
             this.puntoMedioToolStripMenuItem.Click += new System.EventHandler(this.puntoMedioToolStripMenuItem_Click);
             // 
             // circunferencia1ToolStripMenuItem
             // 
             this.circunferencia1ToolStripMenuItem.Name = "circunferencia1ToolStripMenuItem";
-            this.circunferencia1ToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.circunferencia1ToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.circunferencia1ToolStripMenuItem.Text = "circunferencia 1";
             this.circunferencia1ToolStripMenuItem.Click += new System.EventHandler(this.circunferencia1ToolStripMenuItem_Click);
             // 
             // circunferencia2ToolStripMenuItem
             // 
             this.circunferencia2ToolStripMenuItem.Name = "circunferencia2ToolStripMenuItem";
-            this.circunferencia2ToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.circunferencia2ToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.circunferencia2ToolStripMenuItem.Text = "circunferencia 2";
             this.circunferencia2ToolStripMenuItem.Click += new System.EventHandler(this.circunferencia2ToolStripMenuItem_Click);
             // 
             // circunferencia3ToolStripMenuItem
             // 
             this.circunferencia3ToolStripMenuItem.Name = "circunferencia3ToolStripMenuItem";
-            this.circunferencia3ToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.circunferencia3ToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.circunferencia3ToolStripMenuItem.Text = "circunferencia 3";
             this.circunferencia3ToolStripMenuItem.Click += new System.EventHandler(this.circunferencia3ToolStripMenuItem_Click);
+            // 
+            // sutherlandHodgmanToolStripMenuItem
+            // 
+            this.sutherlandHodgmanToolStripMenuItem.Name = "sutherlandHodgmanToolStripMenuItem";
+            this.sutherlandHodgmanToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.sutherlandHodgmanToolStripMenuItem.Text = "Sutherland Hodgman";
+            this.sutherlandHodgmanToolStripMenuItem.Click += new System.EventHandler(this.sutherlandHodgmanToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -129,12 +138,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "llumiquinga ariel";
             // 
-            // sutherlandHodgmanToolStripMenuItem
+            // recorteDeLíneasToolStripMenuItem
             // 
-            this.sutherlandHodgmanToolStripMenuItem.Name = "sutherlandHodgmanToolStripMenuItem";
-            this.sutherlandHodgmanToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.sutherlandHodgmanToolStripMenuItem.Text = "Sutherland Hodgman";
-            this.sutherlandHodgmanToolStripMenuItem.Click += new System.EventHandler(this.sutherlandHodgmanToolStripMenuItem_Click);
+            this.recorteDeLíneasToolStripMenuItem.Name = "recorteDeLíneasToolStripMenuItem";
+            this.recorteDeLíneasToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.recorteDeLíneasToolStripMenuItem.Text = "Recorte de líneas";
+            this.recorteDeLíneasToolStripMenuItem.Click += new System.EventHandler(this.recorteDeLíneasToolStripMenuItem_Click);
             // 
             // home
             // 
@@ -167,6 +176,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem sutherlandHodgmanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recorteDeLíneasToolStripMenuItem;
     }
 }
 

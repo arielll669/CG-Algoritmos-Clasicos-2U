@@ -7,7 +7,7 @@ namespace algoritmos
     public partial class frmCircunferencia3 : Form
     {
         private cPixel pixel;
-        private cIterativo iterativo;
+        private cEcuacion iterativo;
         private static frmCircunferencia3 instancia;
 
         public frmCircunferencia3()
@@ -29,7 +29,7 @@ namespace algoritmos
         {
             // Inicializar las clases
             pixel = new cPixel(panelCircunferencia);
-            iterativo = new cIterativo(pixel);
+            iterativo = new cEcuacion(pixel);
 
             // Dibujar cuadrícula inicial
             pixel.dibujarCuadricula();

@@ -70,5 +70,11 @@ namespace algoritmos
             frmRecorte form7 = frmRecorte.ObtenerInstancia();
             ShowSingletonForm(form7);
         }
+
+        private void recorteDeLíneasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPoligonoRelleno form8 = frmPoligonoRelleno.ObtenerInstancia();
+            ShowSingletonForm(form8);
+        }
     }
 }
