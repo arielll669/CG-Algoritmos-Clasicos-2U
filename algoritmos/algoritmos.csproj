@@ -84,6 +84,12 @@
     <Compile Include="frmDDA.Designer.cs">
       <DependentUpon>frmDDA.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPoligonoRelleno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPoligonoRelleno.Designer.cs">
+      <DependentUpon>frmPoligonoRelleno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRecorte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDDA.resx">
       <DependentUpon>frmDDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPoligonoRelleno.resx">
+      <DependentUpon>frmPoligonoRelleno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecorte.resx">
       <DependentUpon>frmRecorte.cs</DependentUpon>
