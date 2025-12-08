@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cGrafico.cs" />
-    <Compile Include="cPoligono.cs" />
-    <Compile Include="cRellenoGrafico.cs" />
+    <Compile Include="cBoundaryFill.cs" />
+    <Compile Include="cFloodFillIterativo.cs" />
+    <Compile Include="cFloodFillRecursivo.cs" />
+    <Compile Include="cPunto.cs" />
     <Compile Include="cSutherlandHodgman.cs" />
     <Compile Include="frmBresenham.cs">
       <SubType>Form</SubType>
