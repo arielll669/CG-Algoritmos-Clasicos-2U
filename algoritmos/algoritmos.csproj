@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cGrafico.cs" />
     <Compile Include="cPoligono.cs" />
+    <Compile Include="cRellenoGrafico.cs" />
     <Compile Include="cSutherlandHodgman.cs" />
     <Compile Include="frmBresenham.cs">
       <SubType>Form</SubType>

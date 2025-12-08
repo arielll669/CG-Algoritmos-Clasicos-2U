@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,11 +7,9 @@ namespace algoritmos
 {
     public partial class frmPoligonoRelleno : Form
     {
-        private cPixel pixel;
+        private cGrafico grafico;
         private cPoligono poligono;
-        private cRecursivo recursivo;
-        private cPolar polar;
-        private cEcuacion ecuacion;
+        private cRellenoGrafico relleno;
         private static frmPoligonoRelleno instancia;
 
         public frmPoligonoRelleno()
@@ -31,14 +30,9 @@ namespace algoritmos
         private void FrmPoligonoRelleno_Load(object sender, EventArgs e)
         {
             // Inicializar clases
-            pixel = new cPixel(panelPoligono);
-            poligono = new cPoligono(pixel);
-            recursivo = new cRecursivo(pixel);
-            polar = new cPolar(pixel);
-            ecuacion = new cEcuacion(pixel);
-
-            // Dibujar cuadrícula inicial
-            pixel.dibujarCuadricula();
+            grafico = new cGrafico(panelPoligono);
+            poligono = new cPoligono(grafico);
+            relleno = new cRellenoGrafico(grafico);
 
             // Deshabilitar botones de relleno hasta que se cierre el polígono
             btnFloodFill.Enabled = false;
@@ -54,84 +48,145 @@ namespace algoritmos
             // Solo agregar vértices si el polígono no está cerrado
             if (!poligono.poligonoCerrado)
             {
-                // Convertir coordenadas del panel a coordenadas lógicas
-                int celdasX = panelPoligono.Width / pixel.tamañoPixel;
-                int celdasY = panelPoligono.Height / pixel.tamañoPixel;
-                int centroX = (celdasX / 2) * pixel.tamañoPixel;
-                int centroY = (celdasY / 2) * pixel.tamañoPixel;
+                // Usar coordenadas directas del panel
+                int x = e.X;
+                int y = e.Y;
 
-                // Calcular coordenadas lógicas del clic
-                int x = (e.X - centroX) / pixel.tamañoPixel;
-                int y = (centroY - e.Y) / pixel.tamañoPixel;
-
-                // Agregar vértice
-                poligono.AgregarVertice(x, y);
-
-                // Agregar a la lista
-                lstPixeles.Items.Add($"Vértice {poligono.ObtenerNumeroVertices()}: ({x}, {y})");
-
-                // Habilitar botón de cerrar si hay al menos 3 vértices
-                if (poligono.ObtenerNumeroVertices() >= 3)
+                // Detectar si el usuario hizo clic cerca del primer vértice (cierre automático)
+                if (poligono.DetectarCierreAutomatico(x, y))
                 {
-                    btnCerrarPoligono.Enabled = true;
+                    // Cerrar el polígono
+                    poligono.CerrarPoligono();
+                    lstPixeles.Items.Add("--- Polígono cerrado automáticamente ---");
+
+                    // Habilitar botones de relleno
+                    btnFloodFill.Enabled = true;
+                    btnBoundaryFill.Enabled = true;
+                    btnFloodFillIterativo.Enabled = true;
+                }
+                else
+                {
+                    // Agregar vértice normal
+                    poligono.AgregarVertice(x, y);
+
+                    // Agregar a la lista
+                    lstPixeles.Items.Add($"Vértice {poligono.ObtenerNumeroVertices()}: ({x}, {y})");
                 }
             }
         }
 
-
-        private void btnBoundaryFill_Click_1(object sender, EventArgs e)
-        {
-            if (poligono.poligonoCerrado)
-            {
-                lstPixeles.Items.Clear();
-                lstPixeles.Items.Add("=== BOUNDARY FILL ===");
-
-                // Aplicar Boundary Fill desde el centro (0,0)
-                polar.BoundaryFill(0, 0, Color.LightGreen, Color.Black);
-
-                lstPixeles.Items.Add("Relleno completado con Boundary Fill");
-            }
-        }
-
-        private void btnFloodFill_Click_1(object sender, EventArgs e)
+        private void btnFloodFill_Click(object sender, EventArgs e)
         {
             if (poligono.poligonoCerrado)
             {
                 lstPixeles.Items.Clear();
                 lstPixeles.Items.Add("=== FLOOD FILL RECURSIVO ===");
 
-                // Aplicar Flood Fill Recursivo desde el centro (0,0)
-                recursivo.mi_floodfill(0, 0, Color.LightBlue);
+                // Calcular punto interno del polígono (centro aproximado)
+                List<Point> vertices = poligono.ObtenerVertices();
+                int xCentro = 0, yCentro = 0;
+                foreach (Point p in vertices)
+                {
+                    xCentro += p.X;
+                    yCentro += p.Y;
+                }
+                xCentro /= vertices.Count;
+                yCentro /= vertices.Count;
 
-                lstPixeles.Items.Add("Relleno completado con Flood Fill Recursivo");
+                // Aplicar Flood Fill Recursivo
+                List<Point> pixelesPintados = relleno.FloodFillRecursivo(xCentro, yCentro, Color.LightBlue);
+
+                lstPixeles.Items.Add($"Total de píxeles rellenados: {pixelesPintados.Count}");
+                lstPixeles.Items.Add("Primeros 10 píxeles:");
+
+                for (int i = 0; i < Math.Min(10, pixelesPintados.Count); i++)
+                {
+                    lstPixeles.Items.Add($"  ({pixelesPintados[i].X}, {pixelesPintados[i].Y})");
+                }
+
+                if (pixelesPintados.Count > 10)
+                {
+                    lstPixeles.Items.Add($"  ... y {pixelesPintados.Count - 10} más");
+                }
             }
         }
 
-        private void btnFloodFillIterativo_Click_1(object sender, EventArgs e)
+        private void btnBoundaryFill_Click(object sender, EventArgs e)
+        {
+            if (poligono.poligonoCerrado)
+            {
+                lstPixeles.Items.Clear();
+                lstPixeles.Items.Add("=== BOUNDARY FILL ===");
+
+                // Calcular punto interno del polígono
+                List<Point> vertices = poligono.ObtenerVertices();
+                int xCentro = 0, yCentro = 0;
+                foreach (Point p in vertices)
+                {
+                    xCentro += p.X;
+                    yCentro += p.Y;
+                }
+                xCentro /= vertices.Count;
+                yCentro /= vertices.Count;
+
+                // Aplicar Boundary Fill
+                List<Point> pixelesPintados = relleno.BoundaryFill(xCentro, yCentro, Color.LightGreen, Color.Black);
+
+                lstPixeles.Items.Add($"Total de píxeles rellenados: {pixelesPintados.Count}");
+                lstPixeles.Items.Add("Primeros 10 píxeles:");
+
+                for (int i = 0; i < Math.Min(10, pixelesPintados.Count); i++)
+                {
+                    lstPixeles.Items.Add($"  ({pixelesPintados[i].X}, {pixelesPintados[i].Y})");
+                }
+
+                if (pixelesPintados.Count > 10)
+                {
+                    lstPixeles.Items.Add($"  ... y {pixelesPintados.Count - 10} más");
+                }
+            }
+        }
+
+        private void btnFloodFillIterativo_Click(object sender, EventArgs e)
         {
             if (poligono.poligonoCerrado)
             {
                 lstPixeles.Items.Clear();
                 lstPixeles.Items.Add("=== FLOOD FILL ITERATIVO ===");
 
-                // Aplicar Flood Fill Iterativo desde el centro (0,0)
-                ecuacion.FloodFillIterativo(0, 0, Color.Yellow);
+                // Calcular punto interno del polígono
+                List<Point> vertices = poligono.ObtenerVertices();
+                int xCentro = 0, yCentro = 0;
+                foreach (Point p in vertices)
+                {
+                    xCentro += p.X;
+                    yCentro += p.Y;
+                }
+                xCentro /= vertices.Count;
+                yCentro /= vertices.Count;
 
-                lstPixeles.Items.Add("Relleno completado con Flood Fill Iterativo");
-            }
-            else
-            {
-                // Mensaje y registro para depuración
-                MessageBox.Show("El polígono no está cerrado. Añade al menos 3 vértices y pulsa 'Cerrar Poligono'.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lstPixeles.Items.Add("Intento de FloodFillIterativo fallido: polígono no cerrado");
+                // Aplicar Flood Fill Iterativo
+                List<Point> pixelesPintados = relleno.FloodFillIterativo(xCentro, yCentro, Color.Yellow);
+
+                lstPixeles.Items.Add($"Total de píxeles rellenados: {pixelesPintados.Count}");
+                lstPixeles.Items.Add("Primeros 10 píxeles:");
+
+                for (int i = 0; i < Math.Min(10, pixelesPintados.Count); i++)
+                {
+                    lstPixeles.Items.Add($"  ({pixelesPintados[i].X}, {pixelesPintados[i].Y})");
+                }
+
+                if (pixelesPintados.Count > 10)
+                {
+                    lstPixeles.Items.Add($"  ... y {pixelesPintados.Count - 10} más");
+                }
             }
         }
 
-        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
             // Limpiar panel
-            pixel.limpiar();
-            pixel.dibujarCuadricula();
+            grafico.Limpiar();
 
             // Limpiar polígono
             poligono.Limpiar();
@@ -140,27 +195,9 @@ namespace algoritmos
             lstPixeles.Items.Clear();
 
             // Restablecer botones
-            btnCerrarPoligono.Enabled = false;
             btnFloodFill.Enabled = false;
             btnBoundaryFill.Enabled = false;
             btnFloodFillIterativo.Enabled = false;
-        }
-
-        private void btnCerrarPoligono_Click_1(object sender, EventArgs e)
-        {
-            if (poligono.ObtenerNumeroVertices() >= 3 && !poligono.poligonoCerrado)
-            {
-                poligono.CerrarPoligono();
-                lstPixeles.Items.Add("--- Polígono cerrado ---");
-
-                // Deshabilitar botón de cerrar
-                btnCerrarPoligono.Enabled = false;
-
-                // Habilitar botones de relleno
-                btnFloodFill.Enabled = true;
-                btnBoundaryFill.Enabled = true;
-                btnFloodFillIterativo.Enabled = true;
-            }
         }
     }
 }

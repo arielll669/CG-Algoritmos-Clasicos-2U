@@ -6,14 +6,14 @@ namespace algoritmos
 {
     public class cPoligono
     {
-        private cPixel pixel;
+        private cGrafico grafico;
         private List<Point> vertices; // Lista de vértices del polígono
         public bool poligonoCerrado = false;
 
         // Constructor
-        public cPoligono(cPixel pixel)
+        public cPoligono(cGrafico grafico)
         {
-            this.pixel = pixel;
+            this.grafico = grafico;
             vertices = new List<Point>();
         }
 
@@ -24,13 +24,13 @@ namespace algoritmos
             vertices.Add(nuevoVertice);
 
             // Dibujar el punto del vértice
-            pixel.putpixel(x, y, Color.Black);
+            grafico.DibujarPunto(x, y, Color.Red, 6);
 
             // Si hay más de un vértice, dibujar línea desde el anterior
             if (vertices.Count > 1)
             {
                 Point anterior = vertices[vertices.Count - 2];
-                DibujarLinea(anterior.X, anterior.Y, x, y);
+                grafico.DibujarLinea(anterior.X, anterior.Y, x, y, Color.Black, 2);
             }
         }
 
@@ -41,9 +41,24 @@ namespace algoritmos
             {
                 Point primero = vertices[0];
                 Point ultimo = vertices[vertices.Count - 1];
-                DibujarLinea(ultimo.X, ultimo.Y, primero.X, primero.Y);
+                grafico.DibujarLinea(ultimo.X, ultimo.Y, primero.X, primero.Y, Color.Black, 2);
                 poligonoCerrado = true;
             }
+        }
+
+        // Detectar si un clic está cerca del primer vértice (cierre automático)
+        public bool DetectarCierreAutomatico(int x, int y, int tolerancia = 15)
+        {
+            // Necesitamos al menos 3 vértices para formar un polígono
+            if (vertices.Count < 3)
+                return false;
+
+            Point primero = vertices[0];
+
+            // Calcular distancia entre el clic y el primer vértice
+            double distancia = Math.Sqrt(Math.Pow(x - primero.X, 2) + Math.Pow(y - primero.Y, 2));
+
+            return distancia <= tolerancia;
         }
 
         // Limpiar el polígono
@@ -59,36 +74,10 @@ namespace algoritmos
             return vertices.Count;
         }
 
-        // Algoritmo de Bresenham para dibujar líneas
-        private void DibujarLinea(int x0, int y0, int x1, int y1)
+        // Obtener lista de vértices (para referencia)
+        public List<Point> ObtenerVertices()
         {
-            int dx = Math.Abs(x1 - x0);
-            int dy = Math.Abs(y1 - y0);
-            int sx = x0 < x1 ? 1 : -1;
-            int sy = y0 < y1 ? 1 : -1;
-            int err = dx - dy;
-
-            while (true)
-            {
-                pixel.putpixel(x0, y0, Color.Black);
-
-                if (x0 == x1 && y0 == y1)
-                    break;
-
-                int e2 = 2 * err;
-
-                if (e2 > -dy)
-                {
-                    err -= dy;
-                    x0 += sx;
-                }
-
-                if (e2 < dx)
-                {
-                    err += dx;
-                    y0 += sy;
-                }
-            }
+            return new List<Point>(vertices);
         }
     }
 }

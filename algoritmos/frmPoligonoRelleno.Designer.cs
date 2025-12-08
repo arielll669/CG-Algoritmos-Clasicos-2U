@@ -30,13 +30,12 @@
         {
             this.panelPoligono = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnFloodFillIterativo = new System.Windows.Forms.Button();
-            this.btnFloodFill = new System.Windows.Forms.Button();
             this.btnBoundaryFill = new System.Windows.Forms.Button();
-            this.btnCerrarPoligono = new System.Windows.Forms.Button();
+            this.btnFloodFill = new System.Windows.Forms.Button();
+            this.btnFloodFillIterativo = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lstPixeles = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -63,37 +62,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Métodos de relleno";
             // 
-            // groupBox2
+            // btnBoundaryFill
             // 
-            this.groupBox2.Controls.Add(this.btnLimpiar);
-            this.groupBox2.Controls.Add(this.btnCerrarPoligono);
-            this.groupBox2.Location = new System.Drawing.Point(26, 294);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(348, 100);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Funciones";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(354, 82);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Algoritmo de recorte de líneas";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnFloodFillIterativo
-            // 
-            this.btnFloodFillIterativo.Location = new System.Drawing.Point(241, 40);
-            this.btnFloodFillIterativo.Name = "btnFloodFillIterativo";
-            this.btnFloodFillIterativo.Size = new System.Drawing.Size(87, 41);
-            this.btnFloodFillIterativo.TabIndex = 0;
-            this.btnFloodFillIterativo.Text = "Flood Fill Iterativo";
-            this.btnFloodFillIterativo.UseVisualStyleBackColor = true;
-            this.btnFloodFillIterativo.Click += new System.EventHandler(this.btnFloodFillIterativo_Click_1);
+            this.btnBoundaryFill.Location = new System.Drawing.Point(130, 40);
+            this.btnBoundaryFill.Name = "btnBoundaryFill";
+            this.btnBoundaryFill.Size = new System.Drawing.Size(90, 41);
+            this.btnBoundaryFill.TabIndex = 2;
+            this.btnBoundaryFill.Text = "Boundary Fill";
+            this.btnBoundaryFill.UseVisualStyleBackColor = true;
+            this.btnBoundaryFill.Click += new System.EventHandler(this.btnBoundaryFill_Click_1);
             // 
             // btnFloodFill
             // 
@@ -105,35 +82,46 @@
             this.btnFloodFill.UseVisualStyleBackColor = true;
             this.btnFloodFill.Click += new System.EventHandler(this.btnFloodFill_Click_1);
             // 
-            // btnBoundaryFill
+            // btnFloodFillIterativo
             // 
-            this.btnBoundaryFill.Location = new System.Drawing.Point(130, 40);
-            this.btnBoundaryFill.Name = "btnBoundaryFill";
-            this.btnBoundaryFill.Size = new System.Drawing.Size(90, 41);
-            this.btnBoundaryFill.TabIndex = 2;
-            this.btnBoundaryFill.Text = "Boundary Fill";
-            this.btnBoundaryFill.UseVisualStyleBackColor = true;
-            this.btnBoundaryFill.Click += new System.EventHandler(this.btnBoundaryFill_Click_1);
+            this.btnFloodFillIterativo.Location = new System.Drawing.Point(241, 40);
+            this.btnFloodFillIterativo.Name = "btnFloodFillIterativo";
+            this.btnFloodFillIterativo.Size = new System.Drawing.Size(87, 41);
+            this.btnFloodFillIterativo.TabIndex = 0;
+            this.btnFloodFillIterativo.Text = "Flood Fill Iterativo";
+            this.btnFloodFillIterativo.UseVisualStyleBackColor = true;
+            this.btnFloodFillIterativo.Click += new System.EventHandler(this.btnFloodFillIterativo_Click_1);
             // 
-            // btnCerrarPoligono
+            // groupBox2
             // 
-            this.btnCerrarPoligono.Location = new System.Drawing.Point(44, 41);
-            this.btnCerrarPoligono.Name = "btnCerrarPoligono";
-            this.btnCerrarPoligono.Size = new System.Drawing.Size(121, 43);
-            this.btnCerrarPoligono.TabIndex = 1;
-            this.btnCerrarPoligono.Text = "Cerrar Poligono";
-            this.btnCerrarPoligono.UseVisualStyleBackColor = true;
-            this.btnCerrarPoligono.Click += new System.EventHandler(this.btnCerrarPoligono_Click_1);
+            this.groupBox2.Controls.Add(this.btnLimpiar);
+            this.groupBox2.Location = new System.Drawing.Point(26, 294);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(348, 100);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Funciones";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(186, 41);
+            this.btnLimpiar.Location = new System.Drawing.Point(120, 41);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(111, 43);
             this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(354, 82);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Algoritmo de recorte de líneas";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox3
             // 
@@ -183,7 +171,6 @@
         private System.Windows.Forms.Button btnFloodFillIterativo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button btnCerrarPoligono;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox lstPixeles;
