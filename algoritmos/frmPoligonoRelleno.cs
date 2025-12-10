@@ -17,6 +17,8 @@ namespace algoritmos
         private Color colorRelleno = Color.Blue;
         private Color colorFondo = Color.White;
         private const int TOLERANCIA_CIERRE = 10;
+        private bool modoRelleno = false;
+        private string algoritmoSeleccionado = "";
 
         public frmPoligonoRelleno()
         {
@@ -48,38 +50,49 @@ namespace algoritmos
             lstPixeles.Items.Clear();
         }
 
-        private void panelPoligono_MouseClick(object sender, MouseEventArgs e)
+private void panelPoligono_MouseClick(object sender, MouseEventArgs e)
+{
+    // Si está en modo relleno, rellenar desde donde hizo click
+    if (modoRelleno)
+    {
+        cPunto puntoClick = new cPunto(e.X, e.Y);
+        EjecutarRelleno(puntoClick);
+        modoRelleno = false;
+        lblInstrucciones.Text = "Click para dibujar líneas del polígono";
+        return;
+    }
+
+    // Modo dibujo normal
+    if (poligonoCerrado)
+        return;
+
+    cPunto puntoActual = new cPunto(e.X, e.Y);
+
+    // Si es el primer punto
+    if (puntosPoligono.Count == 0)
+    {
+        puntosPoligono.Add(puntoActual);
+        DibujarPunto(puntoActual, colorBorde, 5);
+        lblInstrucciones.Text = "Click cerca del punto inicial para cerrar (opcional)";
+    }
+    else
+    {
+        // Verificar si está cerca del punto inicial para cerrar
+        if (puntosPoligono.Count >= 3 && puntoActual.DistanciaA(puntosPoligono[0]) < TOLERANCIA_CIERRE)
         {
-            if (poligonoCerrado)
-                return;
-
-            cPunto puntoActual = new cPunto(e.X, e.Y);
-
-            // Si es el primer punto
-            if (puntosPoligono.Count == 0)
-            {
-                puntosPoligono.Add(puntoActual);
-                DibujarPunto(puntoActual, colorBorde, 5); // Punto inicial más grande
-                lblInstrucciones.Text = "Click cerca del punto inicial para cerrar";
-            }
-            else
-            {
-                // Verificar si está cerca del punto inicial para cerrar
-                if (puntosPoligono.Count >= 3 && puntoActual.DistanciaA(puntosPoligono[0]) < TOLERANCIA_CIERRE)
-                {
-                    CerrarPoligono();
-                }
-                else
-                {
-                    // Dibujar línea desde el último punto al actual
-                    DibujarLinea(puntosPoligono[puntosPoligono.Count - 1], puntoActual);
-                    puntosPoligono.Add(puntoActual);
-                    DibujarPunto(puntoActual, colorBorde, 3);
-                }
-            }
-
-            panelPoligono.Invalidate();
+            CerrarPoligono();
         }
+        else
+        {
+            // Dibujar línea desde el último punto al actual
+            DibujarLinea(puntosPoligono[puntosPoligono.Count - 1], puntoActual);
+            puntosPoligono.Add(puntoActual);
+            DibujarPunto(puntoActual, colorBorde, 3);
+        }
+    }
+
+    panelPoligono.Invalidate();
+}
 
         private void CerrarPoligono()
         {
@@ -112,45 +125,75 @@ namespace algoritmos
 
         private void btnFloodFillRecursivo_Click(object sender, EventArgs e)
         {
-            if (!poligonoCerrado)
+            if (puntosPoligono.Count < 3)
             {
-                MessageBox.Show("Primero debes cerrar el polígono", "Advertencia");
+                MessageBox.Show("Dibuja al menos 3 puntos", "Advertencia");
                 return;
             }
 
-            cPunto centroide = CalcularCentroide();
-            List<cPunto> pixeles = cFloodFillRecursivo.Rellenar(bitmap, centroide, colorRelleno, colorBorde);
-            MostrarPixeles(pixeles);
-            panelPoligono.Invalidate();
+            modoRelleno = true;
+            algoritmoSeleccionado = "FloodFillRecursivo";
+            lblInstrucciones.Text = "Click DENTRO del área que deseas rellenar";
+            panelPoligono.Cursor = Cursors.Cross;
         }
 
         private void btnFloodFillIterativo_Click(object sender, EventArgs e)
         {
-            if (!poligonoCerrado)
+            if (puntosPoligono.Count < 3)
             {
-                MessageBox.Show("Primero debes cerrar el polígono", "Advertencia");
+                MessageBox.Show("Dibuja al menos 3 puntos", "Advertencia");
                 return;
             }
 
-            cPunto centroide = CalcularCentroide();
-            List<cPunto> pixeles = cFloodFillIterativo.Rellenar(bitmap, centroide, colorRelleno, colorBorde);
-            MostrarPixeles(pixeles);
-            panelPoligono.Invalidate();
+            modoRelleno = true;
+            algoritmoSeleccionado = "FloodFillIterativo";
+            lblInstrucciones.Text = "Click DENTRO del área que deseas rellenar";
+            panelPoligono.Cursor = Cursors.Cross;
         }
 
         private void btnBoundaryFill_Click(object sender, EventArgs e)
         {
-            if (!poligonoCerrado)
+            if (puntosPoligono.Count < 3)
             {
-                MessageBox.Show("Primero debes cerrar el polígono", "Advertencia");
+                MessageBox.Show("Dibuja al menos 3 puntos", "Advertencia");
                 return;
             }
 
-            cPunto centroide = CalcularCentroide();
-            List<cPunto> pixeles = cBoundaryFill.Rellenar(bitmap, centroide, colorRelleno, colorBorde);
-            MostrarPixeles(pixeles);
-            panelPoligono.Invalidate();
+            modoRelleno = true;
+            algoritmoSeleccionado = "BoundaryFill";
+            lblInstrucciones.Text = "Click DENTRO del área que deseas rellenar";
+            panelPoligono.Cursor = Cursors.Cross;
         }
+        private void EjecutarRelleno(cPunto puntoInicio)
+        {
+            List<cPunto> pixeles = new List<cPunto>();
+
+            try
+            {
+                switch (algoritmoSeleccionado)
+                {
+                    case "FloodFillRecursivo":
+                        pixeles = cFloodFillRecursivo.Rellenar(bitmap, puntoInicio, colorRelleno, colorBorde);
+                        break;
+                    case "FloodFillIterativo":
+                        pixeles = cFloodFillIterativo.Rellenar(bitmap, puntoInicio, colorRelleno, colorBorde);
+                        break;
+                    case "BoundaryFill":
+                        pixeles = cBoundaryFill.Rellenar(bitmap, puntoInicio, colorRelleno, colorBorde);
+                        break;
+                }
+
+                MostrarPixeles(pixeles);
+                panelPoligono.Invalidate();
+                panelPoligono.Cursor = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al rellenar: {ex.Message}", "Error");
+                panelPoligono.Cursor = Cursors.Default;
+            }
+        }
+
 
         private cPunto CalcularCentroide()
         {
@@ -186,6 +229,8 @@ namespace algoritmos
         {
             InicializarCanvas();
             panelPoligono.Invalidate();
+            modoRelleno = false;
+            panelPoligono.Cursor = Cursors.Default; // Agregar esta línea
         }
     }
 }

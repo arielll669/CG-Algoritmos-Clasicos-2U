@@ -55,26 +55,52 @@ namespace algoritmos
 
         private void circunferencia2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void circunferencia3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sutherlandHodgmanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recorteDeLíneasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void floodFillRecursivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCircunferencia1 form4 = frmCircunferencia1.ObtenerInstancia();
+            ShowSingletonForm(form4);
+        }
+
+        private void boundaryFillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             frmCircunferencia2 form5 = frmCircunferencia2.ObtenerInstancia();
             ShowSingletonForm(form5);
         }
 
-        private void circunferencia3ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void floodFillRecursivoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmCircunferencia3 form6 = frmCircunferencia3.ObtenerInstancia();
             ShowSingletonForm(form6);
         }
 
-        private void sutherlandHodgmanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmRecorte form7 = frmRecorte.ObtenerInstancia();
-            ShowSingletonForm(form7);
-        }
-
-        private void recorteDeLíneasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void recorteDeLíneasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmPoligonoRelleno form8 = frmPoligonoRelleno.ObtenerInstancia();
             ShowSingletonForm(form8);
+        }
+
+        private void sutherlandHodgmanToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmRecorte form7 = frmRecorte.ObtenerInstancia();
+            ShowSingletonForm(form7);
         }
     }
 }

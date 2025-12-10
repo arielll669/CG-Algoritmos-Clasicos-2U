@@ -46,19 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cBoundaryFill.cs" />
-    <Compile Include="cFloodFillIterativo.cs" />
-    <Compile Include="cFloodFillRecursivo.cs" />
-    <Compile Include="cPunto.cs" />
-    <Compile Include="cSutherlandHodgman.cs" />
+    <Compile Include="PoligonoRelleno\cBoundaryFill.cs" />
+    <Compile Include="PoligonoRelleno\cFloodFillIterativo.cs" />
+    <Compile Include="PoligonoRelleno\cFloodFillRecursivo.cs" />
+    <Compile Include="PoligonoRelleno\cPunto.cs" />
+    <Compile Include="PuntoRecorte\cSutherlandHodgman.cs" />
     <Compile Include="frmBresenham.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBresenham.Designer.cs">
       <DependentUpon>frmBresenham.cs</DependentUpon>
     </Compile>
-    <Compile Include="cBresenham.cs" />
-    <Compile Include="cDDA.cs" />
+    <Compile Include="Bresenham\cBresenham.cs" />
+    <Compile Include="DDA\cDDA.cs" />
     <Compile Include="frmCircunferencia1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,11 +77,11 @@
     <Compile Include="frmCircunferencia3.Designer.cs">
       <DependentUpon>frmCircunferencia3.cs</DependentUpon>
     </Compile>
-    <Compile Include="cEcuacion.cs" />
+    <Compile Include="3circunferencia\cEcuacion.cs" />
     <Compile Include="cPixel.cs" />
-    <Compile Include="cPolar.cs" />
-    <Compile Include="cPuntoMedio.cs" />
-    <Compile Include="cRecursivo.cs" />
+    <Compile Include="2circunferencia\cPolar.cs" />
+    <Compile Include="PuntoMedio\cPuntoMedio.cs" />
+    <Compile Include="1circunferencia\cRecursivo.cs" />
     <Compile Include="frmDDA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,5 +163,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
