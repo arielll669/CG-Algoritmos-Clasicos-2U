@@ -44,7 +44,6 @@ namespace algoritmos
                 // Calcular X usando la ecuación del círculo: x = √(r² - y²)
                 double xCalculado = Math.Sqrt(r * r - y * y);
 
-                // Dibujar los dos puntos simétricos (izquierda y derecha)
                 int x1 = (int)Math.Round(xCalculado);
                 int x2 = (int)Math.Round(-xCalculado);
 
@@ -55,7 +54,6 @@ namespace algoritmos
             }
         }
 
-        // Flood Fill Iterativo usando Queue (NO recursivo)
         public void FloodFillIterativo(int x, int y, Color fillColor)
         {
             Color targetColor = pixel.getpixel(x, y);

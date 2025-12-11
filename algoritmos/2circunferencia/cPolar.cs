@@ -44,13 +44,11 @@ namespace algoritmos
         {
             Color pixelColor = pixel.getpixel(x, y);
             
-            // Si el pixel NO es del color del borde Y NO está ya rellenado
             if (pixelColor.ToArgb() != borderColor.ToArgb() && 
                 pixelColor.ToArgb() != fillColor.ToArgb())
             {
                 pixel.putpixel(x, y, fillColor);
                 
-                // Recursión en 4 direcciones
                 BoundaryFill(x, y + 1, fillColor, borderColor); // Norte
                 BoundaryFill(x + 1, y, fillColor, borderColor); // Este
                 BoundaryFill(x, y - 1, fillColor, borderColor); // Sur

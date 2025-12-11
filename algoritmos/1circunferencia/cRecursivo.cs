@@ -7,15 +7,13 @@ namespace algoritmos
     public class cRecursivo
     {
         private cPixel pixel;
-        public int velocidad = 25; // Milisegundos de delay (ajustable)
+        public int velocidad = 25; 
 
-        // Constructor
         public cRecursivo(cPixel pixel)
         {
             this.pixel = pixel;
         }
 
-        // Dibuja los 8 puntos simétricos del círculo (ahora asíncrono)
         async Task PlotPoint(int xc, int yc, int x, int y)
         {
             pixel.putpixel(xc + x, yc + y, Color.Black);
@@ -43,7 +41,6 @@ namespace algoritmos
             await Task.Delay(velocidad);
         }
 
-        // Algoritmo del punto medio para dibujar círculos (ahora asíncrono)
         public async Task CircleMidPoint(int xc, int yc, int r)
         {
             int x, y, p;
@@ -66,12 +63,10 @@ namespace algoritmos
             }
         }
 
-        // Algoritmo de relleno recursivo (flood fill)
         public void mi_floodfill(int x, int y, Color color)
         {
             Color pixelColor = pixel.getpixel(x, y);
 
-            // Si el pixel NO es negro (borde) Y NO está ya rellenado, entonces pintar
             if (pixelColor.ToArgb() != Color.Black.ToArgb() &&
                 pixelColor.ToArgb() != color.ToArgb())
             {

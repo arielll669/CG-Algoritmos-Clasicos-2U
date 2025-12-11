@@ -9,11 +9,9 @@ namespace algoritmos
         {
             InitializeComponent();
 
-            // Enlazar el menú Ayuda al abrir el formulario de ayuda
             this.ayudaToolStripMenuItem.Click += AyudaToolStripMenuItem_Click;
         }
 
-        // Método de ayuda para simplificar el código
         private void ShowSingletonForm(Form form)
         {
             if (form.WindowState == FormWindowState.Minimized)
