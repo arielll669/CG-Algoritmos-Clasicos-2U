@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAyuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAyuda.Designer.cs" />
     <Compile Include="PoligonoRelleno\cBoundaryFill.cs" />
     <Compile Include="PoligonoRelleno\cFloodFillIterativo.cs" />
     <Compile Include="PoligonoRelleno\cFloodFillRecursivo.cs" />
     <Compile Include="PoligonoRelleno\cPunto.cs" />
+    <Compile Include="PuntoRecorte\cFigurasRecorte.cs" />
     <Compile Include="PuntoRecorte\cSutherlandHodgman.cs" />
     <Compile Include="frmBresenham.cs">
       <SubType>Form</SubType>

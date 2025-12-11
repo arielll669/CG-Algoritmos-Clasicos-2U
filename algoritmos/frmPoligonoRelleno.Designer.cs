@@ -78,6 +78,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnLimpiar);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 271);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(348, 100);
@@ -100,6 +101,7 @@
             this.groupBox1.Controls.Add(this.btnBoundaryFill);
             this.groupBox1.Controls.Add(this.btnFloodFill);
             this.groupBox1.Controls.Add(this.btnFloodFillIterativo);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 125);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(348, 110);
@@ -148,18 +150,20 @@
             // lblInstrucciones
             // 
             this.lblInstrucciones.AutoSize = true;
+            this.lblInstrucciones.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInstrucciones.Location = new System.Drawing.Point(15, 717);
             this.lblInstrucciones.Name = "lblInstrucciones";
-            this.lblInstrucciones.Size = new System.Drawing.Size(44, 16);
+            this.lblInstrucciones.Size = new System.Drawing.Size(60, 23);
             this.lblInstrucciones.TabIndex = 10;
             this.lblInstrucciones.Text = "label2";
             // 
             // lblCantidadPixeles
             // 
             this.lblCantidadPixeles.AutoSize = true;
-            this.lblCantidadPixeles.Location = new System.Drawing.Point(15, 745);
+            this.lblCantidadPixeles.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadPixeles.Location = new System.Drawing.Point(16, 753);
             this.lblCantidadPixeles.Name = "lblCantidadPixeles";
-            this.lblCantidadPixeles.Size = new System.Drawing.Size(44, 16);
+            this.lblCantidadPixeles.Size = new System.Drawing.Size(60, 23);
             this.lblCantidadPixeles.TabIndex = 11;
             this.lblCantidadPixeles.Text = "label3";
             // 

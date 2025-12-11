@@ -41,6 +41,7 @@
             this.recorteDeLíneasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sutherlandHodgmanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.algoritmosToolStripMenuItem,
             this.rellenoCircunferenciaToolStripMenuItem,
-            this.recorteToolStripMenuItem});
+            this.recorteToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -152,6 +154,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Taller";
             // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
             // home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -162,6 +170,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "home";
             this.Text = "Home";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -184,6 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem floodFillRecursivoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem recorteDeLíneasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sutherlandHodgmanToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
     }
 }
 

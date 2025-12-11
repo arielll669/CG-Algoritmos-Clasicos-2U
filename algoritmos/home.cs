@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace algoritmos
@@ -15,8 +8,10 @@ namespace algoritmos
         public home()
         {
             InitializeComponent();
-        }
 
+            // Enlazar el menú Ayuda al abrir el formulario de ayuda
+            this.ayudaToolStripMenuItem.Click += AyudaToolStripMenuItem_Click;
+        }
 
         // Método de ayuda para simplificar el código
         private void ShowSingletonForm(Form form)
@@ -101,6 +96,15 @@ namespace algoritmos
         {
             frmRecorte form7 = frmRecorte.ObtenerInstancia();
             ShowSingletonForm(form7);
+        }
+
+        // Nuevo handler: abre la ventana de ayuda con la información de cada formulario
+        private void AyudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmAyuda())
+            {
+                frm.ShowDialog(this);
+            }
         }
     }
 }
