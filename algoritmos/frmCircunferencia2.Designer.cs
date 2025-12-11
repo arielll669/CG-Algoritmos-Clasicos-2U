@@ -104,17 +104,18 @@
             this.btnResetear.UseVisualStyleBackColor = true;
             this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
-            // circunferencia2
+            // frmCircunferencia2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1329, 718);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtRadio);
             this.Controls.Add(this.panelCircunferencia);
             this.Controls.Add(this.groupBox1);
-            this.Name = "circunferencia2";
+            this.Name = "frmCircunferencia2";
             this.Text = "circunferencia2";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

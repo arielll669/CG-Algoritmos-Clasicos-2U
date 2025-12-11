@@ -225,16 +225,17 @@
             this.lblXo.TabIndex = 0;
             this.lblXo.Text = "Ingrese Xo:";
             // 
-            // puntoMedio
+            // frmPuntoMedio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1343, 766);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbGafico);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.grbEntradas);
-            this.Name = "puntoMedio";
+            this.Name = "frmPuntoMedio";
             this.Text = "puntoMedio";
             this.groupBox1.ResumeLayout(false);
             this.grbGafico.ResumeLayout(false);

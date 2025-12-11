@@ -40,8 +40,8 @@
             this.txt2 = new System.Windows.Forms.TextBox();
             this.txt1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnCalcular = new System.Windows.Forms.Button();
             this.btnResetear = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
@@ -52,6 +52,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.picCanvas);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(329, 23);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(837, 608);
@@ -159,15 +160,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "acción";
             // 
-            // btnCalcular
-            // 
-            this.btnCalcular.Location = new System.Drawing.Point(34, 37);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(85, 34);
-            this.btnCalcular.TabIndex = 0;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            // 
             // btnResetear
             // 
             this.btnResetear.Location = new System.Drawing.Point(125, 37);
@@ -177,24 +169,36 @@
             this.btnResetear.Text = "Resetear";
             this.btnResetear.UseVisualStyleBackColor = true;
             // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(34, 37);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(85, 34);
+            this.btnCalcular.TabIndex = 0;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            // 
             // label5
             // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(27, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(268, 47);
             this.label5.TabIndex = 3;
             this.label5.Text = "label5";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DDA
+            // frmDDA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1169, 643);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "DDA";
+            this.Name = "frmDDA";
             this.Text = "DDA";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();

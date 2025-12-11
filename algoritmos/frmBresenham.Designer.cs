@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnResetear = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.txt1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picCanvas = new System.Windows.Forms.PictureBox();
-            this.btnResetear = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
@@ -60,6 +60,16 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "acción";
+            // 
+            // btnResetear
+            // 
+            this.btnResetear.Location = new System.Drawing.Point(115, 38);
+            this.btnResetear.Name = "btnResetear";
+            this.btnResetear.Size = new System.Drawing.Size(85, 33);
+            this.btnResetear.TabIndex = 1;
+            this.btnResetear.Text = "Resetear";
+            this.btnResetear.UseVisualStyleBackColor = true;
+            this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
             // btnCalcular
             // 
@@ -155,6 +165,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.picCanvas);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(309, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(954, 729);
@@ -169,16 +180,6 @@
             this.picCanvas.Size = new System.Drawing.Size(942, 690);
             this.picCanvas.TabIndex = 0;
             this.picCanvas.TabStop = false;
-            // 
-            // btnResetear
-            // 
-            this.btnResetear.Location = new System.Drawing.Point(115, 38);
-            this.btnResetear.Name = "btnResetear";
-            this.btnResetear.Size = new System.Drawing.Size(85, 33);
-            this.btnResetear.TabIndex = 1;
-            this.btnResetear.Text = "Resetear";
-            this.btnResetear.UseVisualStyleBackColor = true;
-            this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
             // label5
             // 
@@ -199,17 +200,18 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Presiona al boton hasta calcular la recta";
             // 
-            // bresenham
+            // frmBresenham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1275, 753);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "bresenham";
+            this.Name = "frmBresenham";
             this.Text = "bresenham";
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
